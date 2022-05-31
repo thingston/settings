@@ -1,0 +1,56 @@
+{
+    "name": "thingston/settings",
+    "description": "A simple but effective read-only settings package for PHP 8.1.",
+    "keywords": ["php", "config", "settings"],
+    "homepage": "https://github.com/thingston/settings",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pedro Ferreira",
+            "email": "pedro@thingston.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/thingston/settings/issues",
+        "source": "https://github.com/thingston/settings",
+        "docs": "https://github.com/thingston/settings/wiki"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.5",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.16.1",
+        "squizlabs/php_codesniffer": "^3.6",
+        "symfony/var-dumper": "^6.0",
+        "vimeo/psalm": "^4.23"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Thingston\\Settings\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thingston\\Tests\\Settings\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [],
+        "post-update-cmd": []
+    }
+}
