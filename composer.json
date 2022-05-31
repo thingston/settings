@@ -51,6 +51,16 @@
     },
     "scripts": {
         "post-install-cmd": [],
-        "post-update-cmd": []
+        "post-update-cmd": [],
+        "test": "phpunit --colors=always",
+        "analyze": "psalm",
+        "stan": "phpstan",
+        "cs": "phpcs",
+        "cbf": "phpcbf",
+        "build": [
+            "@cs",
+            "@analyze",
+            "@test"
+        ]
     }
 }
