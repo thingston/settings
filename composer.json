@@ -52,7 +52,8 @@
     "scripts": {
         "post-install-cmd": [],
         "post-update-cmd": [],
-        "test": "phpunit --colors=always",
+        "test": "phpunit",
+        "clover": "phpunit --coverage-clover=coverage.xml",
         "analyze": "psalm",
         "stan": "phpstan",
         "cs": "phpcs",

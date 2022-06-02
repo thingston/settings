@@ -8,3 +8,4 @@ composer.phar
 /.vscode
 /.idea
 /phpstan.neon
+/coverage.xml
