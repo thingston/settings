@@ -39,7 +39,7 @@ jobs:
       run: composer run-script analyze
 
     - name: Run unit tests script
-      run: composer run-script clover
+      run: composer run-script coverage:clover
 
     - name: Check code coverage
       run: php .github/check_coverage.php coverage.xml

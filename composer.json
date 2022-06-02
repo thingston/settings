@@ -52,8 +52,15 @@
     "scripts": {
         "post-install-cmd": [],
         "post-update-cmd": [],
-        "test": "phpunit",
-        "clover": "phpunit --coverage-clover=coverage.xml",
+        "test": "phpunit --color=always",
+        "coverage:text": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --color=always --coverage-text"
+        ],
+        "coverage:clover": [
+            "@putenv XDEBUG_MODE=coverage",
+            "phpunit --color=always --coverage-clover=coverage.xml"
+        ],
         "analyze": "psalm",
         "stan": "phpstan",
         "cs": "phpcs",
