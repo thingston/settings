@@ -21,8 +21,12 @@ if (false === is_readable($path)) {
 $xml = new SimpleXMLElement(file_get_contents($path));
 
 $values = [
-    'statements' => 0,
+    'coveredconditionals' => 0,
     'coveredstatements' => 0,
+    'coveredmethods' => 0,
+    'conditionals' => 0,
+    'statements' => 0,
+    'methods' => 0,
 ];
 
 foreach (array_keys($values) as $name) {
@@ -34,7 +38,10 @@ foreach (array_keys($values) as $name) {
     $values[$name] = (int) current($attr)[$name];
 }
 
-$coverage = 0 < $values['coveredstatements'] ? round(($values['statements'] / $values['coveredstatements']) * 100, 2) : 100;
+// TPC = (coveredconditionals + coveredstatements + coveredmethods) / (conditionals + statements + methods)
+$divisor = $values['coveredconditionals'] + $values['coveredstatements'] + $values['coveredmethods'];
+$dividend = $values['conditionals'] + $values['statements'] + $values['methods'];
+$coverage = 0 < $dividend ? round(($divisor / $dividend) * 100, 2) : 100;
 
 $expected = (int) ($argv[2] ?? 90);
 
