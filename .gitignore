@@ -9,3 +9,4 @@ composer.phar
 /.idea
 /phpstan.neon
 /coverage.xml
+/coverage/
