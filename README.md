@@ -29,7 +29,7 @@ if ($settings->has('foo')) {
 ```
 
 > The `$settings` argument must be an associative array where all keys must be a non-empty string.
-> Allowed values are `scalar`, `array` and other instances of `[SettingsInterface](https://github.com/thingston/settings/blob/master/src/SettingsInterface.php)`
+> Allowed values are `scalar`, `array` and other instances of `SettingsInterface`
 
 Alternatively a new instance may also be created using a factory.
 

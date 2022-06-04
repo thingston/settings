@@ -18,20 +18,20 @@ final class SettingsFactory
     }
 
     /**
-     * @param string $file
+     * @param string $path
      * @return SettingsInterface
      * @throws InvalidArgumentException
      */
-    public static function fromFile(string $file): SettingsInterface
+    public static function fromFile(string $path): SettingsInterface
     {
-        if (false === file_exists($file)) {
-            throw InvalidArgumentException::forFileNotFound($file);
+        if (false === is_readable($path)) {
+            throw InvalidArgumentException::forFileNotFound($path);
         }
 
-        $settings = include $file;
+        $settings = include $path;
 
         if (false === is_array($settings)) {
-            throw InvalidArgumentException::forFileContents($file, gettype($settings));
+            throw InvalidArgumentException::forFileContents($path, gettype($settings));
         }
 
         return new Settings($settings);

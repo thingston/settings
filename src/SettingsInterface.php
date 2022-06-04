@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 interface SettingsInterface extends ContainerInterface
 {
     /**
-     * @return array<mixed>
+     * @return array<string, array<mixed>|scalar|SettingsInterface>
      */
     public function toArray(): array;
 }
