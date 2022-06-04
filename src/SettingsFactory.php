@@ -57,9 +57,15 @@ final class SettingsFactory
             if (is_file($file) && '.php' === substr($file, -4)) {
                 $settings[substr($entry, 0, -4)] = self::fromFile($file);
             }
+        }
 
-            if ($recursive && false === in_array($entry, ['.', '..']) && is_dir($file)) {
-                $settings = array_merge($settings, self::fromDir($file, true)->toArray());
+        if ($recursive) {
+            foreach ($scan as $entry) {
+                $file = $path . DIRECTORY_SEPARATOR . $entry;
+
+                if (false === in_array($entry, ['.', '..']) && is_dir($file)) {
+                    $settings = Settings::merge($settings, self::fromDir($file, true))->toArray();
+                }
             }
         }
 
