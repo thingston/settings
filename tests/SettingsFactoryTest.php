@@ -36,4 +36,24 @@ final class SettingsFactoryTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         SettingsFactory::fromFile(__DIR__ . '/invalid.php');
     }
+
+    public function testFromDirectory(): void
+    {
+        $settings = SettingsFactory::fromDir(__DIR__ . '/config');
+
+        $this->assertInstanceOf(SettingsInterface::class, $settings);
+    }
+
+    public function testFromDirectoryRecursive(): void
+    {
+        $settings = SettingsFactory::fromDir(__DIR__ . '/config', true);
+
+        $this->assertInstanceOf(SettingsInterface::class, $settings);
+    }
+
+    public function testFromDirectoryInvalid(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        SettingsFactory::fromDir(__DIR__ . '/invalid.php');
+    }
 }

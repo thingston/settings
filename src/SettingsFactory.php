@@ -36,4 +36,33 @@ final class SettingsFactory
 
         return new Settings($settings);
     }
+
+    /**
+     * @param string $path
+     * @param bool $recursive
+     * @return SettingsInterface
+     * @throws InvalidArgumentException
+     */
+    public static function fromDir(string $path, bool $recursive = false): SettingsInterface
+    {
+        if (false === is_dir($path) || false === $scan = scandir($path)) {
+            throw InvalidArgumentException::forInvalidDirectory($path);
+        }
+
+        $settings = [];
+
+        foreach ($scan as $entry) {
+            $file = $path . DIRECTORY_SEPARATOR . $entry;
+
+            if (is_file($file) && '.php' === substr($file, -4)) {
+                $settings[substr($entry, 0, -4)] = self::fromFile($file);
+            }
+
+            if ($recursive && false === in_array($entry, ['.', '..']) && is_dir($file)) {
+                $settings = array_merge($settings, self::fromDir($file, true)->toArray());
+            }
+        }
+
+        return new Settings($settings);
+    }
 }
