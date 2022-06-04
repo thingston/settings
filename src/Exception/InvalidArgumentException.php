@@ -25,11 +25,16 @@ class InvalidArgumentException extends \InvalidArgumentException implements Sett
 
     public static function forFileNotFound(string $file): self
     {
-        return new self(sprintf('File "%s" not found.', $file));
+        return new self(sprintf('File "%s" not found or it isn\'t readable.', $file));
     }
 
     public static function forFileContents(string $file, string $type): self
     {
         return new self(sprintf('File "%s" must return an array instead of "%s".', $file, $type));
+    }
+
+    public static function forInvalidDirectory(string $dir): self
+    {
+        return new self(sprintf('Argument "%s" isn\'t a directory or it isn\'t readable.', $dir));
     }
 }

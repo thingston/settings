@@ -65,7 +65,6 @@
             "phpunit --color=always --coverage-html=coverage"
         ],
         "coverage:check": [
-            "@putenv XDEBUG_MODE=coverage",
             "@coverage:clover",
             "php .github/check_coverage.php coverage.xml"
         ],

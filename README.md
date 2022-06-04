@@ -12,45 +12,7 @@ A simple but effective read-only settings package for PHP 8.1.
 
 ## Usage
 
-Simply create a new instance from an array:
-
-```php
-<?php
-
-use Thingston\Settings\Settings;
-
-$settings = new Settings([
-    'foo' => 'bar',
-]);
-
-if ($settings->has('foo')) {
-    $foo = $settings->get('foo');
-}
-```
-
-> The `$settings` argument must be an associative array where all keys must be a non-empty string.
-> Allowed values are `scalar`, `array` and other instances of `[SettingsInterface](https://github.com/thingston/settings/blob/master/src/SettingsInterface.php)`
-
-Alternatively a new instance may also be created using a factory.
-
-```php
-use Thingston\Settings\SettingsFactory;
-
-$settings = SettingsFactory::create(['foo' => 'bar']);
-```
-
-Using the factory to read the configurating from a single file.
-
-```php
-// config.php
-
-return ['foo' => 'bar'];
-```
-```php
-use Thingston\Settings\SettingsFactory;
-
-$settings = SettingsFactory::fromFile('config.php');
-```
+Please check the [Documentation](https://github.com/thingston/settings/wiki).
 
 ## Testing
 
