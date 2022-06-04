@@ -66,6 +66,7 @@
         ],
         "coverage:check": [
             "@putenv XDEBUG_MODE=coverage",
+            "@coverage:clover",
             "php .github/check_coverage.php coverage.xml"
         ],
         "analyze": "phpstan",
@@ -74,7 +75,6 @@
         "checks": [
             "@cs",
             "@analyze",
-            "@coverage:clover",
             "@coverage:check"
         ]
     }
