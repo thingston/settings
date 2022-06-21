@@ -6,8 +6,10 @@ namespace Thingston\Settings;
 
 use Thingston\Settings\Exception\InvalidArgumentException;
 
-final class SettingsFactory
+final class SettingsFactory implements SettingsMergeInterface
 {
+    use SettingsMergeTrait;
+
     /**
      * @param array<string, scalar|SettingsInterface> $settings
      * @return SettingsInterface
@@ -64,7 +66,7 @@ final class SettingsFactory
                 $file = $path . DIRECTORY_SEPARATOR . $entry;
 
                 if (false === in_array($entry, ['.', '..']) && is_dir($file)) {
-                    $settings = Settings::merge($settings, self::fromDir($file, true))->toArray();
+                    $settings = self::merge($settings, self::fromDir($file, true))->toArray();
                 }
             }
         }

@@ -6,6 +6,7 @@ namespace Thingston\Tests\Settings;
 
 use PHPUnit\Framework\TestCase;
 use Thingston\Settings\Settings;
+use Thingston\Settings\SettingsMergeTrait;
 
 final class SettingsTest extends TestCase
 {
@@ -24,7 +25,7 @@ final class SettingsTest extends TestCase
             'array' => ['first' => 1, 'second' => 2, 4],
         ]);
 
-        $settings = Settings::merge($settings1, $settings2);
+        $settings = SettingsMergeTrait::merge($settings1, $settings2);
 
         $this->assertSame($settings1->get('foo'), $settings->get('foo'));
         $this->assertSame($settings2->get('baz'), $settings->get('baz'));
