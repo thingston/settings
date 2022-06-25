@@ -2,7 +2,7 @@ name: Update Composer
 
 on:
   schedule:
-    - cron: '33 3 * * *'
+    - cron: '33 3,14 * * *'
 
 permissions:
   contents: write
@@ -37,7 +37,8 @@ jobs:
     - name: Commit changes
       run: |
         DIFF=$(git --no-pager diff)
-        if [ ! $DIFF ] ; then
+        if [ -z "$DIFF" ]
+        then
           echo "Nothing to commit."
           exit 0
         fi
